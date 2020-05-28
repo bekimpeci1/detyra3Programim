@@ -12,9 +12,15 @@ namespace Detyra3Programim
 {
     public partial class Form1 : Form
     {
+        string filePath = @"";
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
