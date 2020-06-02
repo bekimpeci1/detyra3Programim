@@ -10,3 +10,9 @@ c:\users\bekim\desktop\Detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Progra
 C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\bin\Debug\Detyra3Programim.exe.config
 C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\obj\Debug\Detyra3Programim.exe
 C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\obj\Debug\Detyra3Programim.pdb
+C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\bin\Debug\Detyra3Programim.exe
+C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\bin\Debug\Detyra3Programim.pdb
+C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\obj\Debug\Detyra3Programim.csprojResolveAssemblyReference.cache
+C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\obj\Debug\Detyra3Programim.Form1.resources
+C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\obj\Debug\Detyra3Programim.Properties.Resources.resources
+C:\Users\bekim\Desktop\Detyra3Programim1\Detyra3Programim\obj\Debug\Detyra3Programim.csproj.GenerateResource.Cache

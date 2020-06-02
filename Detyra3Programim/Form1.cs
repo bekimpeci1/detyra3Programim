@@ -6,13 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Detyra3Programim
 {
     public partial class Form1 : Form
     {
-        string filePath = @"";
+        string filePath;
+        ReadWrite fileRead = new ReadWrite();
+        ReadWrite fileWrite = new ReadWrite();
         public Form1()
         {
             InitializeComponent();
@@ -20,7 +23,15 @@ namespace Detyra3Programim
 
         private void btnRead_Click(object sender, EventArgs e)
         {
+            filePath = @"" + txtFile.Text;
+            fileRead.ReadFileText(filePath,txtEditor);
 
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            filePath = @"" + txtFile.Text;
+            fileWrite.WriteOnFile(filePath, txtEditor);
         }
     }
 }
