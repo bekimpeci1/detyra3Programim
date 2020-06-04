@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblFile = new System.Windows.Forms.Label();
             this.txtFile = new System.Windows.Forms.TextBox();
             this.btnRead = new System.Windows.Forms.Button();
@@ -43,6 +44,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.browseDialog = new System.Windows.Forms.OpenFileDialog();
             this.Search.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -65,11 +69,12 @@
             // 
             // btnRead
             // 
-            this.btnRead.Location = new System.Drawing.Point(582, 22);
+            this.btnRead.Location = new System.Drawing.Point(611, 18);
             this.btnRead.Name = "btnRead";
-            this.btnRead.Size = new System.Drawing.Size(75, 23);
+            this.btnRead.Size = new System.Drawing.Size(100, 26);
             this.btnRead.TabIndex = 2;
             this.btnRead.Text = "Read";
+            this.toolTip1.SetToolTip(this.btnRead, "Ctrl + R");
             this.btnRead.UseVisualStyleBackColor = true;
             this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
@@ -171,6 +176,7 @@
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 15;
             this.btnSave.Text = "Save";
+            this.toolTip1.SetToolTip(this.btnSave, "Ctrl + S");
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -183,11 +189,35 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBrowse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnBrowse.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnBrowse.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBrowse.ForeColor = System.Drawing.Color.Black;
+            this.btnBrowse.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnBrowse.Location = new System.Drawing.Point(582, 24);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(23, 17);
+            this.btnBrowse.TabIndex = 17;
+            this.btnBrowse.Text = "...";
+            this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolTip1.SetToolTip(this.btnBrowse, "Browse (Crtl+B)");
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
+            // 
+            // browseDialog
+            // 
+            this.browseDialog.FileName = "openFileDialog1";
+            this.browseDialog.Title = "Zgjedhni nje File";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 543);
+            this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
@@ -198,8 +228,11 @@
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.txtFile);
             this.Controls.Add(this.lblFile);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
             this.Search.ResumeLayout(false);
             this.Search.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -226,6 +259,9 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.OpenFileDialog browseDialog;
     }
 }
 
