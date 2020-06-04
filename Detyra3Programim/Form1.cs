@@ -16,10 +16,18 @@ namespace Detyra3Programim
         string filePath;
         ReadWrite fileRead = new ReadWrite();
         ReadWrite fileWrite = new ReadWrite();
+        KeyBoardShortcut keyPad = new KeyBoardShortcut();
         public Form1()
         {
             InitializeComponent();
         }
+        private void Form1_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            keyPad.BrowseKey(e, btnBrowse);
+            keyPad.ReadKey(e, btnRead);
+            keyPad.SaveKey(e, btnSave);
+        }
+
 
         private void btnRead_Click(object sender, EventArgs e)
         {
@@ -33,5 +41,33 @@ namespace Detyra3Programim
             filePath = @"" + txtFile.Text;
             fileWrite.WriteOnFile(filePath, txtEditor);
         }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            string UserNamePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            FileDialog(UserNamePath);
+
+        }
+        private void FileDialog (string userNamePath)
+        {
+            browseDialog.InitialDirectory = userNamePath + @"\desktop";
+            browseDialog.RestoreDirectory = true;
+            browseDialog.Filter = "txt Files(*.txt)|*.txt";
+            browseDialog.FileName = "";
+            browseDialog.ShowDialog();
+            try
+            {          
+                filePath = @"" +  browseDialog.FileName;
+                txtFile.Text = filePath;
+                txtEditor.Text = File.ReadAllText(filePath);// + Environment.NewLine;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ju lutem selektoni nje File");
+            }
+        }
+
+      
     }
 }
