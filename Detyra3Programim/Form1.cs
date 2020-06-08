@@ -68,6 +68,6 @@ namespace Detyra3Programim
             }
         }
 
-      
+     
     }
 }

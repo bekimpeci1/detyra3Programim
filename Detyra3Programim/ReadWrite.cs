@@ -41,7 +41,9 @@ namespace Detyra3Programim
             {
 
                 MessageBox.Show(ex.Message);
-            } finally
+            }
+           
+            finally
             {
                 fileStream.Close();
 
