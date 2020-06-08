@@ -10,42 +10,47 @@ namespace Detyra3Programim
 {
     class ReadWrite
     {
-        public void ReadFileText(string path, TextBox txtBox)
+        /// <summary>
+        /// Metodat e me poshtme mundesojne
+        /// Leximin dhe Shkrimin e File-ve te perzgjedhur
+        /// </summary>
+        /// <param name="path">Tregon adresen se ku mund te gjindet ai File</param>
+        /// <param name="txtBox">Tregon se ne cilin RichTextBox te shenohet
+        /// Permbajtja e atij File-i</param>
+        public void ReadFileText(string path, RichTextBox txtBox)
         {
             try
             {
-            string[] fileText = File.ReadAllLines(path, Encoding.UTF8);
-            foreach (string line in fileText)
-            {
-                txtBox.Text += line + Environment.NewLine;
-            }
+                //Encoding.UTF8 --> Tregon tipin e enkodimit i cili perdoret ne
+                //File-in ne te cilin deshirojme te manipulojm
+                string[] fileText = File.ReadAllLines(path, Encoding.UTF8);
+                //Shton cdo rresht ne fileText ne RichTexBox
+                foreach (string line in fileText)
+                {
+                    txtBox.Text += line + Environment.NewLine;
+                }
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
             }
-           
+
         }
-        public void WriteOnFile(string path, TextBox txtBox)
+        public void WriteOnFile(string path, RichTextBox txtBox)
         {
-            FileStream fileStream = File.OpenWrite(path);
             try
             {
-                   string teksti = txtBox.Text; 
-                    byte[] bytes = Encoding.UTF8.GetBytes(teksti);
-                    fileStream.Write(bytes, 0, bytes.Length);
+                File.WriteAllText(path, txtBox.Text);
 
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
-            } finally
-            {
-                fileStream.Close();
-
             }
+
+
 
 
         }
