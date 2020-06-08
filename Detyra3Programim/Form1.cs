@@ -46,6 +46,7 @@ namespace Detyra3Programim
             keyPad.BrowseKey(btnBrowse,e);
             keyPad.ReadKey(btnRead,e);
             keyPad.SaveKey(btnSave,e);
+            keyPad.CloseKey(btnClosee, e);
         }
 
         //Merr vendodhjen e e file-it qe shfrytezuesi deshiron ta shoh

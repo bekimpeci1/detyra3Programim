@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using System.Windows.Forms;
 
 
@@ -27,7 +26,7 @@ namespace Detyra3Programim
         //Pasi qe te dyjat kan KeyEventArgs
         //Dhe ne menyr qe t'i shmangemi ketij konflikti
         //specifikohet ne kete menyre
-        public void BrowseKey(Button btn,System.Windows.Forms.KeyEventArgs e)
+        public void BrowseKey(Button btn,KeyEventArgs e)
         {
             //e.Control --> Shiqon se a eshte shtyper Ctrl
           if(e.Control &&  e.KeyCode == Keys.B)
@@ -37,23 +36,23 @@ namespace Detyra3Programim
             }
 
         }
-        public void ReadKey(Button btn, System.Windows.Forms.KeyEventArgs e)
+        public void ReadKey(Button btn,KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.R)
             {
                 btn.PerformClick();
             }
         }
-        public void SaveKey(Button btn, System.Windows.Forms.KeyEventArgs e)
+        public void SaveKey(Button btn,KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
             {
                 btn.PerformClick();
             }
         }
-        public void CloseKey (Button btn, System.Windows.Forms.KeyEventArgs e)
+        public void CloseKey (Button btn,KeyEventArgs e)
         {
-            if (e.Control && Keyboard.IsKeyDown(Key.K))
+            if (e.Control && e.KeyCode == Keys.K)
             {
                 btn.PerformClick();
             }
