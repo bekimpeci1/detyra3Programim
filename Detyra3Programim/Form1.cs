@@ -87,8 +87,6 @@ namespace Detyra3Programim
         #region Metodat
         /// <summary>
         /// Ben shfaqjen e dilaogun per hapje te file-it
-        /// si fillim gjithmon direktoriumin fillestar e ka desktop-in
-        /// e shfrytezuesit
         /// Ne dialog do te shfaqen vetem file-it te tipit "txt"(text)
         /// Dhe me pastaj pas zgjedhjes se file-it, teksti i cili 
         /// gjindet ne ate file vendoset ne RichTextBox
@@ -98,8 +96,9 @@ namespace Detyra3Programim
         /// i cili per momentin eshte aktiv</param>
         private void FileDialog (string userNamePath)
         {
-            browseDialog.InitialDirectory = userNamePath + @"\desktop";
             browseDialog.RestoreDirectory = true;
+            browseDialog.InitialDirectory = userNamePath + @"\desktop";
+            browseDialog.ValidateNames = true;
             browseDialog.Filter = "txt Files(*.txt)|*.txt";
             browseDialog.FileName = "";
             browseDialog.ShowDialog();
