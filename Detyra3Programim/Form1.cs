@@ -38,7 +38,9 @@ namespace Detyra3Programim
         /// </summary>
         /// <param btn="button">Parametri i par tregon butonin i cili klikohet
         /// nepermjet  shortcut-i i cakuar</param>
-        /// <param keyEvent="e">Tregon eventin i cili do te ndodh</param>
+        /// <param keyEvent="e">Emri i keyEventit, te cilin do e perdorim per
+        /// te shiquar se a jane mbushur kushtet ne if statements
+        /// qe jane vendosur ne klasen KeyBoardShortcut</param>
         private void Form1_KeyDown_1(object sender, KeyEventArgs e)
         {
 
