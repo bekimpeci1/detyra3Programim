@@ -33,7 +33,6 @@
             this.txtFile = new System.Windows.Forms.TextBox();
             this.btnRead = new System.Windows.Forms.Button();
             this.lblEditor = new System.Windows.Forms.Label();
-            this.txtEditor = new System.Windows.Forms.TextBox();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtCount = new System.Windows.Forms.TextBox();
@@ -43,10 +42,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.browseDialog = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.richTxtEditor = new System.Windows.Forms.RichTextBox();
+            this.btnClosee = new System.Windows.Forms.Button();
             this.Search.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +70,7 @@
             // 
             // btnRead
             // 
+            this.btnRead.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRead.Location = new System.Drawing.Point(611, 18);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(100, 26);
@@ -87,15 +89,6 @@
             this.lblEditor.TabIndex = 3;
             this.lblEditor.Text = "Text Editor";
             // 
-            // txtEditor
-            // 
-            this.txtEditor.Location = new System.Drawing.Point(36, 90);
-            this.txtEditor.Multiline = true;
-            this.txtEditor.Name = "txtEditor";
-            this.txtEditor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtEditor.Size = new System.Drawing.Size(540, 380);
-            this.txtEditor.TabIndex = 4;
-            // 
             // txtSearch
             // 
             this.txtSearch.Location = new System.Drawing.Point(6, 19);
@@ -105,6 +98,7 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Location = new System.Drawing.Point(165, 17);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
@@ -121,6 +115,7 @@
             // 
             // btnCount
             // 
+            this.btnCount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCount.Location = new System.Drawing.Point(159, 16);
             this.btnCount.Name = "btnCount";
             this.btnCount.Size = new System.Drawing.Size(75, 23);
@@ -171,6 +166,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Location = new System.Drawing.Point(692, 482);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
@@ -179,15 +175,6 @@
             this.toolTip1.SetToolTip(this.btnSave, "Ctrl + S");
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(793, 482);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 16;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
             // 
             // btnBrowse
             // 
@@ -212,18 +199,38 @@
             this.browseDialog.FileName = "openFileDialog1";
             this.browseDialog.Title = "Zgjedhni nje File";
             // 
+            // richTxtEditor
+            // 
+            this.richTxtEditor.Location = new System.Drawing.Point(12, 91);
+            this.richTxtEditor.Name = "richTxtEditor";
+            this.richTxtEditor.Size = new System.Drawing.Size(593, 414);
+            this.richTxtEditor.TabIndex = 18;
+            this.richTxtEditor.Text = "";
+            // 
+            // btnClosee
+            // 
+            this.btnClosee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClosee.Location = new System.Drawing.Point(802, 482);
+            this.btnClosee.Name = "btnClosee";
+            this.btnClosee.Size = new System.Drawing.Size(75, 23);
+            this.btnClosee.TabIndex = 20;
+            this.btnClosee.Text = "Close";
+            this.toolTip1.SetToolTip(this.btnClosee, "Ctrl+K");
+            this.btnClosee.UseVisualStyleBackColor = true;
+            this.btnClosee.Click += new System.EventHandler(this.btnClosee_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(945, 543);
+            this.Controls.Add(this.btnClosee);
+            this.Controls.Add(this.richTxtEditor);
             this.Controls.Add(this.btnBrowse);
-            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Search);
-            this.Controls.Add(this.txtEditor);
             this.Controls.Add(this.lblEditor);
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.txtFile);
@@ -248,7 +255,6 @@
         private System.Windows.Forms.TextBox txtFile;
         private System.Windows.Forms.Button btnRead;
         private System.Windows.Forms.Label lblEditor;
-        private System.Windows.Forms.TextBox txtEditor;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtCount;
@@ -258,10 +264,12 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.OpenFileDialog browseDialog;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.RichTextBox richTxtEditor;
+        private System.Windows.Forms.Button btnClosee;
     }
 }
 
