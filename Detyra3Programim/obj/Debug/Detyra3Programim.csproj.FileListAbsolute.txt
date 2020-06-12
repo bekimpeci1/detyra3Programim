@@ -34,3 +34,12 @@ C:\Users\Dell\Source\Repos\bekimpeci1\detyra3Programim\Detyra3Programim\obj\Debu
 C:\Users\Dell\Source\Repos\bekimpeci1\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.csproj.GenerateResource.cache
 C:\Users\Dell\Source\Repos\bekimpeci1\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.exe
 C:\Users\Dell\Source\Repos\bekimpeci1\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.pdb
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\bin\Debug\Detyra3Programim.exe.config
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.exe
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.pdb
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\bin\Debug\Detyra3Programim.exe
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\bin\Debug\Detyra3Programim.pdb
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.csprojResolveAssemblyReference.cache
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.Form1.resources
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.Properties.Resources.resources
+C:\Users\bekim\Desktop\GrupiStudenti\detyra3Programim\Detyra3Programim\obj\Debug\Detyra3Programim.csproj.GenerateResource.Cache

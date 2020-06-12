@@ -60,17 +60,13 @@ namespace Detyra3Programim
         private void btnRead_Click(object sender, EventArgs e)
         {
             filePath = @"" + txtFile.Text;
-            string teskti = File.ReadAllText(filePath);
-            if (!String.IsNullOrEmpty(teskti))
-            {
-                fileRead.ReadFileText(filePath, richTxtEditor);
-            } else
-            {
-                MessageBox.Show("File nuk duhet te jete i zbrazur");
-            }          
+            fileRead.ReadFileText(filePath, richTxtEditor);
+
+
+
+
+
         }
-
-
 
 
         //Merr vendodhjen e e file-it qe shfrytezuesi deshiron ta ruaj ndryshimet
