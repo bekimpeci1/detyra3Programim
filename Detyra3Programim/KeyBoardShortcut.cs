@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
-
-
+using System.Text.RegularExpressions;
 
 namespace Detyra3Programim
 {
@@ -57,16 +60,33 @@ namespace Detyra3Programim
                 btn.PerformClick();
             }
         }
-        public void SearchKey(Button btn, KeyEventArgs e, TextBox txtBox)
+        public void SearchKey(Button btn, KeyEventArgs e, TextBox txtBox,ErrorProvider err1)
         {
             
             
             if (e.Shift && e.KeyCode == Keys.S)
             {
-                string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);            
-                txtBox.Text = teksti;
-                btn.PerformClick();
-               
+                try
+                {
+                    string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
+                    txtBox.Text = teksti;
+                    btn.PerformClick();
+                }
+                catch (ValueEmptyException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    txtBox.Focus();                 
+                    err1.SetError(txtBox, "Fusha duhet te jete e plotesuar");
+                }
+                catch (IndexOutOfRangeException ex)
+                {
+                    MessageBox.Show("Ju lutem plotesoni text editorin per te filluar kerkimin");
+                } catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+
             }
             
         }
@@ -76,9 +96,17 @@ namespace Detyra3Programim
             
             if (e.Shift && e.KeyCode == Keys.C)
             {
-                string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
-                txtBox.Text = teksti;
-                btn.PerformClick();
+                try
+                {
+                    string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
+                    txtBox.Text = teksti;
+                    btn.PerformClick();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
             }
         }
     }

@@ -50,7 +50,7 @@ namespace Detyra3Programim
             keyPad.BrowseKey(btnBrowse, e);
             keyPad.ReadKey(btnRead, e);
             keyPad.SaveKey(btnSave, e);
-            keyPad.SearchKey(btnSearch, e,txtSearch);
+            keyPad.SearchKey(btnSearch, e,txtSearch,errorProvider1);
             keyPad.CountKey(btnCount, e,txtCount);
             
         }
