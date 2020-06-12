@@ -60,24 +60,14 @@ namespace Detyra3Programim
         private void btnRead_Click(object sender, EventArgs e)
         {
             filePath = @"" + txtFile.Text;
-            if (!String.IsNullOrEmpty(File.ReadAllText(filePath)))
+            string teskti = File.ReadAllText(filePath);
+            if (!String.IsNullOrEmpty(teskti))
             {
-                try
-                {
-                    txtFile.Text = filePath;
-                    richTxtEditor.Text = File.ReadAllText(filePath);
-                }
-                catch (Exception ex)
-                {
-
-                    MessageBox.Show(ex.Message);
-                }
-
-            }
-            else
+                fileRead.ReadFileText(filePath, richTxtEditor);
+            } else
             {
-                MessageBox.Show("File-i nuk mund te jete i zbrazet");
-            }
+                MessageBox.Show("File nuk duhet te jete i zbrazur");
+            }          
         }
 
 
