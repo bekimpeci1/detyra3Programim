@@ -51,7 +51,7 @@ namespace Detyra3Programim
             keyPad.ReadKey(btnRead, e);
             keyPad.SaveKey(btnSave, e);
             keyPad.SearchKey(btnSearch, e,txtSearch,errorProvider1);
-            keyPad.CountKey(btnCount, e,txtCount);
+            keyPad.CountKey(btnCount, e,txtCount,errorProvider1);
             
         }
 
@@ -59,16 +59,42 @@ namespace Detyra3Programim
         //Dhe te gjithe tekstin e merr dhe e shonon ne RichTextBox
         private void btnRead_Click(object sender, EventArgs e)
         {
-            filePath = @"" + txtFile.Text;
-            fileRead.ReadFileText(filePath, richTxtEditor);
+            try
+            {
+                if (!String.IsNullOrEmpty(File.ReadAllText(filePath)))
+                {
+                    filePath = @"" + txtFile.Text;
+                    fileRead.ReadFileText(filePath, richTxtEditor);
+                } else
+                {
+                    MessageBox.Show("Jenu duke provuar te hapni nje file te zbrazet");
+                     
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+               
+            
 
         }
         //Merr vendodhjen e e file-it qe shfrytezuesi deshiron ta ruaj ndryshimet
         //Dhe te gjithe tekstin e merr nga RichTextBox dhe e vendos ne file-in perkates 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            filePath = @"" + txtFile.Text;
-            fileWrite.WriteOnFile(filePath, richTxtEditor);
+            try
+            {
+                filePath = @"" + txtFile.Text;
+                fileWrite.WriteOnFile(filePath, richTxtEditor);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         //mundeson qe te hapet nje dialog ku shfrytezuesi zgjedh file-in qe deshiron
         //ta hap
@@ -77,8 +103,17 @@ namespace Detyra3Programim
         //shfrytezuesi mund te navigoj neper direktoriume te tjera
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            string UserNamePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
-            FileDialog(UserNamePath);
+            try
+            {
+                string UserNamePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+                FileDialog(UserNamePath);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+            
 
         }
         //Mundeson mbylljen e Formes
@@ -230,15 +265,17 @@ namespace Detyra3Programim
             browseDialog.ShowDialog();
             try
             {
-                filePath = @"" + browseDialog.FileName;
-                txtFile.Text = filePath;
-                richTxtEditor.Text = File.ReadAllText(filePath);// + Environment.NewLine;
+                if (!String.IsNullOrEmpty(File.ReadAllText(filePath)))
+                {
+                    filePath = @"" + txtFile.Text;
+                    fileRead.ReadFileText(filePath, richTxtEditor);
+                }
             }
             //Nese shfrytezuesi mbyll dialogun pa zgjedhur ne file, shfaqet MSGBox
             catch (Exception)
             {
 
-                MessageBox.Show("Ju lutem selektoni nje File");
+                MessageBox.Show("Ju lutem selektoni nje File, i cili poashtu nuk eshte i zbrazet");
             }
         }
 

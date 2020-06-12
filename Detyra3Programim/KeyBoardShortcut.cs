@@ -53,63 +53,87 @@ namespace Detyra3Programim
                 btn.PerformClick();
             }
         }
-       public void CancelKey(Button btn, KeyEventArgs e)
+        public void CancelKey(Button btn, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.K)
             {
                 btn.PerformClick();
             }
         }
-        public void SearchKey(Button btn, KeyEventArgs e, TextBox txtBox,ErrorProvider err1)
+        public void SearchKey(Button btn, KeyEventArgs e, TextBox txtBox, ErrorProvider err1)
         {
-            
-            
+
+
             if (e.Shift && e.KeyCode == Keys.S)
             {
                 try
                 {
-                    string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
-                    txtBox.Text = teksti;
-                    btn.PerformClick();
+                    if (!String.IsNullOrEmpty(txtBox.Text))
+                    {
+                        string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
+                        txtBox.Text = teksti;
+                        btn.PerformClick();
+                    }
+                    else
+                    {
+                        throw new ValueEmptyException();
+
+                    }
+                }
+
+                catch (IndexOutOfRangeException ex)
+                {
+                    MessageBox.Show("Ju lutem plotesoni text editorin per te filluar kerkimin");
                 }
                 catch (ValueEmptyException ex)
                 {
                     MessageBox.Show(ex.Message);
-                    txtBox.Focus();                 
+                    txtBox.Focus();
                     err1.SetError(txtBox, "Fusha duhet te jete e plotesuar");
-                }
-                catch (IndexOutOfRangeException ex)
-                {
-                    MessageBox.Show("Ju lutem plotesoni text editorin per te filluar kerkimin");
-                } catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-
-            }
-            
-        }
-        public void CountKey(Button btn, KeyEventArgs e, TextBox txtBox)
-        {
-
-            
-            if (e.Shift && e.KeyCode == Keys.C)
-            {
-                try
-                {
-                    string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
-                    txtBox.Text = teksti;
-                    btn.PerformClick();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
 
+
+            }
+
+        }
+        public void CountKey(Button btn, KeyEventArgs e, TextBox txtBox, ErrorProvider err1)
+        {
+
+
+            if (e.Shift && e.KeyCode == Keys.C)
+            {
+                try
+                {
+                    if (!String.IsNullOrEmpty(txtBox.Text))
+                    {
+                        string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
+                        txtBox.Text = teksti;
+                        btn.PerformClick();
+                    }
+                    else
+                    {
+                        throw new ValueEmptyException();
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show("Ju lutem shkruani para se the shtypni buttonin");
+                }
+
+                catch (ValueEmptyException ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    txtBox.Focus();
+                    err1.SetError(txtBox, "Fusha duhet te jete e plotesuar");
+                }
+
             }
         }
-    }
 
+    }
 }
 
