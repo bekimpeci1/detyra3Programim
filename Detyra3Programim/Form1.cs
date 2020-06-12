@@ -67,10 +67,10 @@ namespace Detyra3Programim
                     txtFile.Text = filePath;
                     richTxtEditor.Text = File.ReadAllText(filePath);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
-                    MessageBox.Show("Ju lutem zgjedhni nje file");
+                    MessageBox.Show(ex.Message);
                 }
 
             }
