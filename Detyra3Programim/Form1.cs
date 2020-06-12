@@ -50,36 +50,39 @@ namespace Detyra3Programim
             keyPad.BrowseKey(btnBrowse, e);
             keyPad.ReadKey(btnRead, e);
             keyPad.SaveKey(btnSave, e);
-            keyPad.SearchKey(btnSearch, e,txtSearch,errorProvider1);
-            keyPad.CountKey(btnCount, e,txtCount,errorProvider1);
-            
+            keyPad.SearchKey(btnSearch, e, txtSearch, errorProvider1);
+            keyPad.CountKey(btnCount, e, txtCount, errorProvider1);
+
         }
 
         //Merr vendodhjen e e file-it qe shfrytezuesi deshiron ta shoh
         //Dhe te gjithe tekstin e merr dhe e shonon ne RichTextBox
         private void btnRead_Click(object sender, EventArgs e)
         {
-            try
+            filePath = @"" + txtFile.Text;
+            if (!String.IsNullOrEmpty(File.ReadAllText(filePath)))
             {
-                if (!String.IsNullOrEmpty(File.ReadAllText(filePath)))
+                try
                 {
-                    filePath = @"" + txtFile.Text;
-                    fileRead.ReadFileText(filePath, richTxtEditor);
-                } else
-                {
-                    MessageBox.Show("Jenu duke provuar te hapni nje file te zbrazet");
-                     
+                    txtFile.Text = filePath;
+                    richTxtEditor.Text = File.ReadAllText(filePath);
                 }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Ju lutem zgjedhni nje file");
+                }
+
             }
-            catch (Exception ex)
+            else
             {
-
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("File-i nuk mund te jete i zbrazet");
             }
-               
-            
-
         }
+
+
+
+
         //Merr vendodhjen e e file-it qe shfrytezuesi deshiron ta ruaj ndryshimet
         //Dhe te gjithe tekstin e merr nga RichTextBox dhe e vendos ne file-in perkates 
         private void btnSave_Click(object sender, EventArgs e)
@@ -94,7 +97,7 @@ namespace Detyra3Programim
 
                 MessageBox.Show(ex.Message);
             }
-            
+
         }
         //mundeson qe te hapet nje dialog ku shfrytezuesi zgjedh file-in qe deshiron
         //ta hap
@@ -113,7 +116,7 @@ namespace Detyra3Programim
 
                 MessageBox.Show(ex.Message);
             }
-            
+
 
         }
         //Mundeson mbylljen e Formes
@@ -179,10 +182,10 @@ namespace Detyra3Programim
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-     
-                
-              
-            
+
+
+
+
             try
             {
                 if (txtSearch.Text == "")
@@ -263,21 +266,31 @@ namespace Detyra3Programim
             browseDialog.Filter = "txt Files(*.txt)|*.txt";
             browseDialog.FileName = "";
             browseDialog.ShowDialog();
-            try
-            {
-                if (!String.IsNullOrEmpty(File.ReadAllText(filePath)))
-                {
-                    filePath = @"" + txtFile.Text;
-                    fileRead.ReadFileText(filePath, richTxtEditor);
-                }
-            }
-            //Nese shfrytezuesi mbyll dialogun pa zgjedhur ne file, shfaqet MSGBox
-            catch (Exception)
-            {
+            filePath = @"" + browseDialog.FileName;
 
-                MessageBox.Show("Ju lutem selektoni nje File, i cili poashtu nuk eshte i zbrazet");
+            if (!String.IsNullOrEmpty(File.ReadAllText(filePath)))
+            {
+                try
+                {
+                    txtFile.Text = filePath;
+                    richTxtEditor.Text = File.ReadAllText(filePath);
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Ju lutem zgjedhni nje file");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("File-i nuk mund te jete i zbrazet");
             }
         }
+        //Nese shfrytezuesi mbyll dialogun pa zgjedhur ne file, shfaqet MSGBox
+
+    }
+}
 
 
 
@@ -288,5 +301,6 @@ namespace Detyra3Programim
         #endregion
 
        
-    }
-}
+    
+
+
