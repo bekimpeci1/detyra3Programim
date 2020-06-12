@@ -19,6 +19,7 @@ namespace Detyra3Programim
         /// Permbajtja e atij File-i</param>
         public void ReadFileText(string path, RichTextBox txtBox)
         {
+            
             try
             {
                 //Encoding.UTF8 --> Tregon tipin e enkodimit i cili perdoret ne

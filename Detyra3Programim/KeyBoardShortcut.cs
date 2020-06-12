@@ -57,6 +57,30 @@ namespace Detyra3Programim
                 btn.PerformClick();
             }
         }
+        public void SearchKey(Button btn, KeyEventArgs e, TextBox txtBox)
+        {
+            
+            
+            if (e.Shift && e.KeyCode == Keys.S)
+            {
+                string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);            
+                txtBox.Text = teksti;
+                btn.PerformClick();
+               
+            }
+            
+        }
+        public void CountKey(Button btn, KeyEventArgs e, TextBox txtBox)
+        {
+
+            
+            if (e.Shift && e.KeyCode == Keys.C)
+            {
+                string teksti = txtBox.Text.Remove(txtBox.Text.Length - 1, 1);
+                txtBox.Text = teksti;
+                btn.PerformClick();
+            }
+        }
     }
 
 }

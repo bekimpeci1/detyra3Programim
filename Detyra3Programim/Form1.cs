@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Detyra3Programim
 {
@@ -49,6 +50,8 @@ namespace Detyra3Programim
             keyPad.BrowseKey(btnBrowse, e);
             keyPad.ReadKey(btnRead, e);
             keyPad.SaveKey(btnSave, e);
+            keyPad.SearchKey(btnSearch, e,txtSearch);
+            keyPad.CountKey(btnCount, e,txtCount);
             
         }
 
@@ -83,7 +86,126 @@ namespace Detyra3Programim
         {
             Environment.Exit(0);
         }
+        private void btnCount_Click(object sender, EventArgs e)
+        {
+            int totaliIShkronjave = 0;
+            string tekstiIPerzgjedhur;
+            try
+            {
+                if (txtCount.Text == "")
+                {
+                    throw new ValueEmptyException();
+                }
+                else
+                {
+                    Regex shkronjaRegex = new Regex(@"[a-za-z]");
+                    tekstiIPerzgjedhur = txtCount.Text;
+                    for (int i = 0; i < tekstiIPerzgjedhur.Length; i++)
+                    {
+                        string prova = tekstiIPerzgjedhur[i].ToString();
+                        Match matchShkronja = shkronjaRegex.Match(prova);
+                        if (matchShkronja.Success)
+                        {
+                            totaliIShkronjave++;
+                        }
 
+                    }
+                    double totaliIShkronjaveNePerqindje = (Convert.ToDouble(totaliIShkronjave) / (tekstiIPerzgjedhur.Length) * 100);
+                    pbCountResults.Value = Convert.ToInt32(totaliIShkronjaveNePerqindje);
+                    lblResult.Text = "Totali i shkronjave te perdorura eshte: " + totaliIShkronjave;
+                    lblProgress.Text = Math.Round(totaliIShkronjaveNePerqindje) + "% e tekstit eshte e perbere nga shkronjat";
+                    lblProgress.Visible = true;
+                    pbCountResults.Visible = true;
+                }
+
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Ju lutem shkruani para se the shtypni buttonin");
+            }
+
+            catch (ValueEmptyException ex)
+            {
+                MessageBox.Show(ex.Message);
+                txtSearch.Focus();
+                errorProvider1.SetError(txtCount, "Fusha duhet te jete e plotesuar");
+            }
+
+
+
+
+
+
+        }
+
+        int VleraFillestare = 0;
+        int counter = 0;
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+     
+                
+              
+            
+            try
+            {
+                if (txtSearch.Text == "")
+                {
+                    throw new ValueEmptyException();
+
+                }
+                else if (richTxtEditor.Text == "")
+                {
+                    throw new IndexOutOfRangeException();
+                }
+                else
+                {
+                    int returnValue = richTxtEditor.Find(txtSearch.Text, VleraFillestare, RichTextBoxFinds.MatchCase);
+                    richTxtEditor.Find(txtSearch.Text, VleraFillestare, richTxtEditor.TextLength, RichTextBoxFinds.MatchCase);
+                    richTxtEditor.BackColor = Color.White;
+                    richTxtEditor.SelectionBackColor = Color.Red;
+
+                    VleraFillestare = VleraFillestare + 1;
+                    VleraFillestare = richTxtEditor.Text.IndexOf(txtSearch.Text, VleraFillestare) + 1;
+
+                    if (returnValue > 0)
+                    {
+
+                        counter++;
+                    }
+
+                    if (returnValue < 0)
+                    {
+                        if (counter > 0)
+                        {
+                            MessageBox.Show("Teksti u gjend gjithsej " + counter + " here");
+                            counter = 0;
+                        }
+                        else if (counter <= 0)
+                        {
+                            MessageBox.Show("Teksti nuk u gjet");
+                            counter = 0;
+
+
+                        }
+                    }
+                }
+
+            }
+            catch (ValueEmptyException ex)
+            {
+                MessageBox.Show(ex.Message);
+                txtSearch.Focus();
+                errorProvider1.SetError(txtSearch, "Fusha duhet te jete e plotesuar");
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                MessageBox.Show("Ju lutem plotesoni text editorin per te filluar kerkimin");
+            }
+
+
+        }
         #endregion
 
 
@@ -119,6 +241,7 @@ namespace Detyra3Programim
                 MessageBox.Show("Ju lutem selektoni nje File");
             }
         }
+
 
 
 

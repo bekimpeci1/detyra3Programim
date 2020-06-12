@@ -40,15 +40,18 @@
             this.lblResult = new System.Windows.Forms.Label();
             this.Search = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblProgress = new System.Windows.Forms.Label();
+            this.pbCountResults = new System.Windows.Forms.ProgressBar();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.browseDialog = new System.Windows.Forms.OpenFileDialog();
             this.richTxtEditor = new System.Windows.Forms.RichTextBox();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.Search.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblFile
@@ -69,10 +72,11 @@
             // 
             // btnRead
             // 
+            this.btnRead.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRead.Location = new System.Drawing.Point(611, 18);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(100, 26);
-            this.btnRead.TabIndex = 2;
+            this.btnRead.TabIndex = 3;
             this.btnRead.Text = "Read";
             this.toolTip1.SetToolTip(this.btnRead, "Ctrl + R");
             this.btnRead.UseVisualStyleBackColor = true;
@@ -93,32 +97,38 @@
             this.txtSearch.Location = new System.Drawing.Point(6, 19);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(153, 20);
-            this.txtSearch.TabIndex = 6;
+            this.txtSearch.TabIndex = 5;
             // 
             // btnSearch
             // 
+            this.btnSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSearch.Location = new System.Drawing.Point(165, 17);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 7;
+            this.btnSearch.TabIndex = 6;
             this.btnSearch.Text = "Search";
+            this.toolTip1.SetToolTip(this.btnSearch, "Shift + S");
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtCount
             // 
             this.txtCount.Location = new System.Drawing.Point(0, 19);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(153, 20);
-            this.txtCount.TabIndex = 9;
+            this.txtCount.TabIndex = 7;
             // 
             // btnCount
             // 
+            this.btnCount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCount.Location = new System.Drawing.Point(159, 16);
             this.btnCount.Name = "btnCount";
             this.btnCount.Size = new System.Drawing.Size(75, 23);
-            this.btnCount.TabIndex = 10;
+            this.btnCount.TabIndex = 8;
             this.btnCount.Text = "Count";
+            this.toolTip1.SetToolTip(this.btnCount, "Shift +C");
             this.btnCount.UseVisualStyleBackColor = true;
+            this.btnCount.Click += new System.EventHandler(this.btnCount_Click);
             // 
             // lblResult
             // 
@@ -142,31 +152,43 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblProgress);
+            this.groupBox1.Controls.Add(this.pbCountResults);
             this.groupBox1.Controls.Add(this.txtCount);
             this.groupBox1.Controls.Add(this.btnCount);
             this.groupBox1.Controls.Add(this.lblResult);
             this.groupBox1.Location = new System.Drawing.Point(626, 167);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(242, 83);
+            this.groupBox1.Size = new System.Drawing.Size(242, 154);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Count";
             // 
-            // groupBox2
+            // lblProgress
             // 
-            this.groupBox2.Location = new System.Drawing.Point(630, 272);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(238, 154);
-            this.groupBox2.TabIndex = 14;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Additional GUI";
+            this.lblProgress.AutoSize = true;
+            this.lblProgress.Location = new System.Drawing.Point(6, 116);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(57, 13);
+            this.lblProgress.TabIndex = 13;
+            this.lblProgress.Text = "Rezultati : ";
+            this.lblProgress.Visible = false;
+            // 
+            // pbCountResults
+            // 
+            this.pbCountResults.Location = new System.Drawing.Point(59, 87);
+            this.pbCountResults.Name = "pbCountResults";
+            this.pbCountResults.Size = new System.Drawing.Size(100, 23);
+            this.pbCountResults.TabIndex = 12;
+            this.pbCountResults.Visible = false;
             // 
             // btnSave
             // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Location = new System.Drawing.Point(692, 482);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 15;
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.toolTip1.SetToolTip(this.btnSave, "Ctrl + S");
             this.btnSave.UseVisualStyleBackColor = true;
@@ -174,11 +196,13 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Location = new System.Drawing.Point(793, 482);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 16;
+            this.btnCancel.TabIndex = 10;
             this.btnCancel.Text = "Cancel";
+            this.toolTip1.SetToolTip(this.btnCancel, "Ctrl + K");
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             this.btnCancel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown_1);
@@ -194,7 +218,7 @@
             this.btnBrowse.Location = new System.Drawing.Point(582, 24);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(23, 17);
-            this.btnBrowse.TabIndex = 17;
+            this.btnBrowse.TabIndex = 2;
             this.btnBrowse.Text = "...";
             this.btnBrowse.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolTip1.SetToolTip(this.btnBrowse, "Browse (Crtl+B)");
@@ -211,8 +235,12 @@
             this.richTxtEditor.Location = new System.Drawing.Point(44, 93);
             this.richTxtEditor.Name = "richTxtEditor";
             this.richTxtEditor.Size = new System.Drawing.Size(532, 395);
-            this.richTxtEditor.TabIndex = 18;
+            this.richTxtEditor.TabIndex = 4;
             this.richTxtEditor.Text = "";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // Form1
             // 
@@ -223,7 +251,6 @@
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.lblEditor);
@@ -239,6 +266,7 @@
             this.Search.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,13 +285,15 @@
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.GroupBox Search;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.OpenFileDialog browseDialog;
         private System.Windows.Forms.RichTextBox richTxtEditor;
+        private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.ProgressBar pbCountResults;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
 
